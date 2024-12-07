@@ -1,7 +1,9 @@
 #pragma once
+
 #include <QWidget>
 #include <QTimer>
 #include "board.h"
+#include "scorepanel.h"
 
 class Tetris : public QWidget {
     Q_OBJECT
@@ -15,4 +17,5 @@ private slots:
 private:
     Board *board;
     QTimer *timer;
+    ScorePanel *scorePanel;
 };

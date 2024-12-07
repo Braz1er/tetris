@@ -1,9 +1,13 @@
 #include "tetris.h"
-#include <QVBoxLayout>
+#include <QHBoxLayout>
 
 Tetris::Tetris(QWidget *parent) : QWidget(parent) {
-    QVBoxLayout *layout = new QVBoxLayout(this);  // Основной компоновщик для Tetris
-    board = new Board(this);
+    QHBoxLayout *layout = new QHBoxLayout(this);  // Основной компоновщик для Tetris
+
+    scorePanel = new ScorePanel(this);
+    board = new Board(scorePanel, this);
+
+    layout->addWidget(scorePanel);
     layout->addWidget(board);  // Добавляем Board на основной виджет
     setLayout(layout);  // Устанавливаем компоновку для Tetris
 

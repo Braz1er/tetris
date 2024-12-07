@@ -3,10 +3,41 @@
 #include <QPainter>
 #include <QDebug>
 
-Board::Board(QWidget *parent) : QWidget(parent) {
+Board::Board(ScorePanel *scorePanel, QWidget *parent) : QWidget(parent), scorePanel(scorePanel) {
     setFocusPolicy(Qt::StrongFocus);
     setFixedSize(BoardWidth * 30, BoardHeight * 30);  // Задаем размер игрового поля
+
     newPiece();
+}
+
+void Board::restartGame() {
+    currentShape = Shape::randomShape();
+    currentX = BoardWidth / 2;
+    currentY = 0;
+
+    qDebug() << "RRR";
+
+    for (int x = 0; x < BoardWidth; ++x) {
+        for (int y = 0; y < BoardHeight; ++y) {
+            board[x][y] = 0;
+        }
+    }
+
+    qDebug() << "RRR";
+
+    score = 0;
+    level = 1;
+
+    qDebug() << "RRR";
+
+    isGameOver = false;
+    isPaused = false;
+
+    qDebug() << "RRR";
+
+    scorePanel->setScore(score);
+    scorePanel->setLevel(level);
+    qDebug() << "RRR";
 }
 
 void Board::paintEvent(QPaintEvent *event) {
@@ -36,15 +67,11 @@ void Board::paintEvent(QPaintEvent *event) {
 void Board::keyPressEvent(QKeyEvent *event) {
     switch (event->key()) {
         case Qt::Key_R:
-            currentShape = Shape::randomShape();
-            currentX = BoardWidth / 2;
-            currentY = 0;
-            for (int x = 0; x < BoardWidth; ++x) {
-                for (int y = 0; y < BoardHeight; ++y) {
-                    board[x][y] = 0;  // Очистка поля
-                }
-            }
+            qDebug() << "RRR";
+            restartGame();
+            qDebug() << "RRR";
             update();
+            qDebug() << "RRR";
             break;
         case Qt::Key_Left:
             tryMove(currentShape, currentX - 1, currentY);
@@ -87,6 +114,12 @@ void Board::keyPressEvent(QKeyEvent *event) {
             tryMove(currentShape, currentX, currentY);
             update();
             break;
+
+        case Qt::Key_P:
+            if (isPaused) resumeGame();
+            else pauseGame();
+            update();
+            break;
     }
 }
 
@@ -97,6 +130,9 @@ void Board::moveDown() {
             int y = currentY + block[1];
             if (y >= 0) board[x][y] = 1;
         }
+        clearFullLines();
+        clearFullLines();
+        clearFullLines();
         clearFullLines();
         qDebug() << "New piece generated";
         newPiece();
@@ -144,15 +180,32 @@ void Board::clearFullLines() {
             }
         }
         if (full) {
+            updateScore(100);
             for (int yy = y; yy > 0; --yy) {
                 for (int x = 0; x < BoardWidth; ++x) {
                     board[x][yy] = board[x][yy - 1];
                 }
             }
-            for (int x = 0; x < BoardWidth; ++x) {
-                board[x][0] = 0;
-            }
-            y++;  // Проверить эту строку снова
         }
     }
+
+}
+
+void Board::updateScore(int points) {
+    score += points;
+    scorePanel->setScore(score);
+    if (score % 500 == 0) increaseLevel();
+}
+
+void Board::increaseLevel() {
+    level++;
+    scorePanel->setLevel(level);
+}
+
+void Board::pauseGame() {
+    isPaused = true;
+}
+
+void Board::resumeGame() {
+    isPaused = false;
 }

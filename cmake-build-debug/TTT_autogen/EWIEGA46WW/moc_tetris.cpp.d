@@ -162,6 +162,7 @@ C:/Users/artem/CLionProjects/TTT/cmake-build-debug/TTT_autogen/EWIEGA46WW/moc_te
   C:/Qt/6.8.0/mingw_64/include/QtGui/qpainter.h \
   C:/Qt/6.8.0/mingw_64/include/QtGui/qpalette.h \
   C:/Qt/6.8.0/mingw_64/include/QtGui/qpen.h \
+  C:/Qt/6.8.0/mingw_64/include/QtGui/qpicture.h \
   C:/Qt/6.8.0/mingw_64/include/QtGui/qpixelformat.h \
   C:/Qt/6.8.0/mingw_64/include/QtGui/qpixmap.h \
   C:/Qt/6.8.0/mingw_64/include/QtGui/qpointingdevice.h \
@@ -171,6 +172,7 @@ C:/Users/artem/CLionProjects/TTT/cmake-build-debug/TTT_autogen/EWIEGA46WW/moc_te
   C:/Qt/6.8.0/mingw_64/include/QtGui/qrgba64.h \
   C:/Qt/6.8.0/mingw_64/include/QtGui/qscreen.h \
   C:/Qt/6.8.0/mingw_64/include/QtGui/qscreen_platform.h \
+  C:/Qt/6.8.0/mingw_64/include/QtGui/qtextdocument.h \
   C:/Qt/6.8.0/mingw_64/include/QtGui/qtextoption.h \
   C:/Qt/6.8.0/mingw_64/include/QtGui/qtgui-config.h \
   C:/Qt/6.8.0/mingw_64/include/QtGui/qtguiexports.h \
@@ -180,7 +182,15 @@ C:/Users/artem/CLionProjects/TTT/cmake-build-debug/TTT_autogen/EWIEGA46WW/moc_te
   C:/Qt/6.8.0/mingw_64/include/QtGui/qvectornd.h \
   C:/Qt/6.8.0/mingw_64/include/QtGui/qwindowdefs.h \
   C:/Qt/6.8.0/mingw_64/include/QtGui/qwindowdefs_win.h \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/QLabel \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/QVBoxLayout \
   C:/Qt/6.8.0/mingw_64/include/QtWidgets/QWidget \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/qboxlayout.h \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/qframe.h \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/qgridlayout.h \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/qlabel.h \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/qlayout.h \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/qlayoutitem.h \
   C:/Qt/6.8.0/mingw_64/include/QtWidgets/qsizepolicy.h \
   C:/Qt/6.8.0/mingw_64/include/QtWidgets/qtwidgets-config.h \
   C:/Qt/6.8.0/mingw_64/include/QtWidgets/qtwidgetsexports.h \
@@ -393,4 +403,5 @@ C:/Users/artem/CLionProjects/TTT/cmake-build-debug/TTT_autogen/EWIEGA46WW/moc_te
   C:/Users/artem/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/vadefs.h \
   C:/Users/artem/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/wchar.h \
   C:/Users/artem/CLionProjects/TTT/board.h \
+  C:/Users/artem/CLionProjects/TTT/scorepanel.h \
   C:/Users/artem/CLionProjects/TTT/shape.h
