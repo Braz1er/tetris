@@ -14,19 +14,24 @@ public:
     Board(ScorePanel *scorePanel, QWidget *parent = nullptr);
     void moveDown();
     void restartGame();
+    void pauseGame();
+    void increaseLevel();
+
+    bool isPaused = false;
 
 protected:
     void paintEvent(QPaintEvent *event) override;
     void keyPressEvent(QKeyEvent *event) override;
+
+signals:
+    void LevelUp(int level);
+    void GameOver();
 
 private:
     void drawSquare(QPainter &painter, int x, int y, QColor color);
     void newPiece();
     bool tryMove(const Shape& shape, int newX, int newY);
     void clearFullLines();
-    void increaseLevel();
-    void pauseGame();
-    void resumeGame();
     void updateScore(int points);
 
     enum { BoardWidth = 10, BoardHeight = 20 };
@@ -36,7 +41,6 @@ private:
     int score = 0;
     int level = 1;
     bool isGameOver = false;
-    bool isPaused = false;
 
     ScorePanel *scorePanel;
 };

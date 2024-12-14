@@ -13,9 +13,14 @@ public:
 
 private slots:
     void updateGame();
+    void handleLevelUp(int level);
+    void resetTimer();
 
 private:
     Board *board;
     QTimer *timer;
     ScorePanel *scorePanel;
+
+    int baseSpeed = 500;
+    int minSpeed = 100;
 };

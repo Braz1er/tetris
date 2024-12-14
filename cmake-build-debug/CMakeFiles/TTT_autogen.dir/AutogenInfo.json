@@ -249,6 +249,12 @@
 			null
 		],
 		[
+			"C:/Users/artem/CLionProjects/TTT/scorepanel.h",
+			"MU",
+			"EWIEGA46WW/moc_scorepanel.cpp",
+			null
+		],
+		[
 			"C:/Users/artem/CLionProjects/TTT/shape.h",
 			"MU",
 			"EWIEGA46WW/moc_shape.cpp",
@@ -334,6 +340,7 @@
 	[
 		[ "C:/Users/artem/CLionProjects/TTT/board.cpp", "MU", null ],
 		[ "C:/Users/artem/CLionProjects/TTT/main.cpp", "MU", null ],
+		[ "C:/Users/artem/CLionProjects/TTT/scorepanel.cpp", "MU", null ],
 		[ "C:/Users/artem/CLionProjects/TTT/shape.cpp", "MU", null ],
 		[ "C:/Users/artem/CLionProjects/TTT/tetris.cpp", "MU", null ]
 	],
