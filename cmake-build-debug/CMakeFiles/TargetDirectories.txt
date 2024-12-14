@@ -1,5 +1,0 @@
-C:/Users/artem/CLionProjects/TTT/cmake-build-debug/CMakeFiles/TTT.dir
-C:/Users/artem/CLionProjects/TTT/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/artem/CLionProjects/TTT/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-C:/Users/artem/CLionProjects/TTT/cmake-build-debug/CMakeFiles/TTT_autogen_timestamp_deps.dir
-C:/Users/artem/CLionProjects/TTT/cmake-build-debug/CMakeFiles/TTT_autogen.dir
