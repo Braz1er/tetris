@@ -18,6 +18,8 @@ add_executable(TTT main.cpp
         board.cpp
         board.h
         shape.cpp
-        shape.h)
+        shape.h
+        scorepanel.cpp
+        scorepanel.h)
 
 target_link_libraries(TTT Qt6::Widgets)
