@@ -1,4 +1,5 @@
 #include "scorepanel.h"
+#include <QVBoxLayout>
 #include <QPainter>
 
 ScorePanel::ScorePanel(QWidget *parent) : QWidget(parent)
@@ -6,13 +7,11 @@ ScorePanel::ScorePanel(QWidget *parent) : QWidget(parent)
     scoreLabel = new QLabel("Score: 0", this);
     levelLabel = new QLabel("Level: 1", this);
 
-    // Устанавливаем стиль для текста
     scoreLabel->setAlignment(Qt::AlignHCenter);
     levelLabel->setAlignment(Qt::AlignHCenter);
     scoreLabel->setStyleSheet("font-size: 18px; color: black;");
     levelLabel->setStyleSheet("font-size: 18px; color: black;");
 
-    // Макет для панели
     QVBoxLayout *layout = new QVBoxLayout();
     layout->addWidget(scoreLabel);
     layout->addWidget(levelLabel);

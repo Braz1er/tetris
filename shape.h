@@ -15,6 +15,6 @@ public:
 
 private:
     ShapeType type_;
-    std::vector<std::array<int, 2>> blocks_;  // Массив блоков фигуры
+    std::vector<std::array<int, 2>> blocks_;
     void setShape(ShapeType type);
 };
