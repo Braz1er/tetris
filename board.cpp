@@ -6,7 +6,7 @@
 Board::Board(ScorePanel *scorePanel, QWidget *parent) : QWidget(parent), scorePanel(scorePanel)
 {
     setFocusPolicy(Qt::StrongFocus);
-    setFixedSize(BoardWidth * 30, BoardHeight * 30);  // Задаем размер игрового поля
+    setFixedSize(BoardWidth * 30, BoardHeight * 30);
     restartGame();
 }
 
@@ -16,9 +16,9 @@ void Board::restartGame()
     currentX = BoardWidth / 2;
     currentY = 0;
 
-    for (int x = 0; x < BoardWidth; ++x)
+    for (int x = 0; x < BoardWidth; x++)
     {
-        for (int y = 0; y < BoardHeight; ++y)
+        for (int y = 0; y < BoardHeight; y++)
         {
             board[x][y] = 0;
         }
@@ -33,14 +33,16 @@ void Board::restartGame()
     newPiece();
 }
 
-void Board::paintEvent(QPaintEvent *event) {
+void Board::paintEvent(QPaintEvent *event)
+{
     QPainter painter(this);
-    painter.fillRect(rect(), Qt::lightGray);  // Устанавливаем цвет фона
+    painter.fillRect(rect(), Qt::lightGray);
+    drawGrid(painter);
 
     // Отрисовка уже зафиксированных блоков
-    for (int x = 0; x < BoardWidth; ++x)
+    for (int x = 0; x < BoardWidth; x++)
     {
-        for (int y = 0; y < BoardHeight; ++y)
+        for (int y = 0; y < BoardHeight; y++)
         {
             if (board[x][y])
             {
@@ -56,7 +58,7 @@ void Board::paintEvent(QPaintEvent *event) {
         int y = currentY + block[1];
 
         if (y >= 0)
-        {  // Проверка, чтобы не отрисовывать за пределами доски
+        {
             drawSquare(painter, x * 30, y * 30, Qt::red);
         }
     }
@@ -142,15 +144,29 @@ void Board::keyPressEvent(QKeyEvent *event)
                 }
             }
 
-            if (currentX - minX == 0)
+            if (currentX - minX <= 1)
             {
-                currentX++;
+                if (currentShape.type() == ShapeType::I)
+                {
+                    currentX = currentX + 3;
+                }
+                else
+                {
+                    currentX = currentX + 2;
+                }
                 qDebug() << "Fixed rotate left";
             }
 
-            if (currentX + maxX == 10)
+            if (currentX + maxX >= 9)
             {
-                currentX--;
+                if (currentShape.type() == ShapeType::I)
+                {
+                    currentX = currentX - 3;
+                }
+                else
+                {
+                    currentX = currentX - 2;
+                }
                 qDebug() << "Fixed rotate right";
             }
 
@@ -201,9 +217,9 @@ void Board::newPiece()
     if (!tryMove(currentShape, currentX, currentY))
     {
         // Конец игры, если новая фигура не может быть размещена
-        for (int x = 0; x < BoardWidth; ++x)
+        for (int x = 0; x < BoardWidth; x++)
         {
-            for (int y = 0; y < BoardHeight; ++y)
+            for (int y = 0; y < BoardHeight; y++)
             {
                 board[x][y] = 0;  // Очистка поля
             }
@@ -239,11 +255,11 @@ bool Board::tryMove(const Shape& shape, int newX, int newY)
 
 void Board::clearFullLines()
 {
-    for (int y = BoardHeight - 1; y >= 0; --y)
+    for (int y = BoardHeight - 1; y >= 0; y--)
     {
         bool full = true;
 
-        for (int x = 0; x < BoardWidth; ++x)
+        for (int x = 0; x < BoardWidth; x++)
         {
             if (!board[x][y])
             {
@@ -256,9 +272,9 @@ void Board::clearFullLines()
         {
             updateScore(100);
 
-            for (int yy = y; yy > 0; --yy)
+            for (int yy = y; yy > 0; yy--)
             {
-                for (int x = 0; x < BoardWidth; ++x)
+                for (int x = 0; x < BoardWidth; x++)
                 {
                     board[x][yy] = board[x][yy - 1];
                 }
@@ -278,7 +294,8 @@ void Board::updateScore(int points)
     }
 }
 
-void Board::increaseLevel() {
+void Board::increaseLevel()
+{
     level++;
     scorePanel->setLevel(level);
     emit LevelUp(level);
@@ -290,5 +307,27 @@ void Board::pauseGame()
     {
         return;
     }
+
     isPaused = !isPaused;
+}
+
+void Board::drawGrid(QPainter &painter)
+{
+    QPen pen(gridColor);
+    pen.setWidth(1);
+    painter.setPen(pen);
+
+    // Вертикальные линии
+    for (int x = 0; x <= BoardWidth; x++)
+    {
+        int xPos = x * BlockSize;
+        painter.drawLine(xPos, 0, xPos, BoardHeight * BlockSize);
+    }
+
+    // Горизонтальные линии
+    for (int y = 0; y <= BoardHeight; y++)
+    {
+        int yPos = y * BlockSize;
+        painter.drawLine(0, yPos, BoardWidth * BlockSize, yPos);
+    }
 }

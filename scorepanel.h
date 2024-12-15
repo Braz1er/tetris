@@ -2,7 +2,6 @@
 
 #include <QWidget>
 #include <QLabel>
-#include <QVBoxLayout>
 
 class ScorePanel : public QWidget {
 Q_OBJECT
